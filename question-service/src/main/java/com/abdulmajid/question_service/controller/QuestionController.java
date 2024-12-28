@@ -18,7 +18,7 @@ public class QuestionController {
 
     @Autowired
     QuestionService questionService;
-
+ // testing load balancing
     @Autowired
     Environment environment;
 
@@ -55,7 +55,9 @@ public class QuestionController {
     @PostMapping("getQuestions")
     public  ResponseEntity<List<QuestionWrapper>> getQuestionsFromId(@RequestBody List<Integer> questionIds)
     {
-        //System.out.println(environment.getProperty("local.server.port"));
+        // for check  load balancing
+        System.out.println(environment.getProperty("local.server.port"));
+        System.out.println("hi");
         return questionService.getQuestionFromId(questionIds);
     }
 
